@@ -1,7 +1,7 @@
 
 package Pruebas;
 
-import Vista.Login;
+import Vista.Pantalla_Añadir_Usuario;
 
 /**
  *
@@ -15,8 +15,8 @@ public class test {
      */
     public static void main(String[] args) {
         
-        Login login = new Login();
-        login.setVisible(true);
+        Pantalla_Añadir_Usuario n = new Pantalla_Añadir_Usuario();
+        n.setVisible(true);
         
 
     }

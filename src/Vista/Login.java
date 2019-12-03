@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Controlador.Controlador_Login;
+import Controlador.Controlador_Principal_Administrador;
+import Controlador.Controlador_Principal_Seguridad;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.io.File;
@@ -27,6 +30,8 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setVisible(true);
+        
         try {
             setIconImage(ImageIO.read(new File("src\\Recursos\\iconoEstacionamiento_1.png")));
         } catch (IOException ex) {
@@ -54,10 +59,7 @@ public class Login extends javax.swing.JFrame {
         campoUsuario = new javax.swing.JTextField();
         bIngresar = new javax.swing.JButton();
         campoContraseña = new javax.swing.JPasswordField();
-        radioSeguridad = new javax.swing.JRadioButton();
-        radioAdmin = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         laMapa = new javax.swing.JLabel();
         labelPie = new javax.swing.JLabel();
@@ -83,39 +85,20 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Contraseña");
         jLabel2.setToolTipText("");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Usuario");
         jLabel3.setToolTipText("");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
-        jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 200, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, -1, -1));
+        jPanel1.add(campoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 200, 30));
 
         bIngresar.setBackground(new java.awt.Color(255, 204, 51));
         bIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         bIngresar.setText("Ingresar");
-        bIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bIngresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(bIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 400, 40));
-        jPanel1.add(campoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 200, 30));
-
-        grupo.add(radioSeguridad);
-        radioSeguridad.setSelected(true);
-        radioSeguridad.setText("Seguridad");
-        radioSeguridad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioSeguridadActionPerformed(evt);
-            }
-        });
-        jPanel1.add(radioSeguridad, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 90, -1));
-
-        grupo.add(radioAdmin);
-        radioAdmin.setText("Administrador");
-        jPanel1.add(radioAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, -1, -1));
+        jPanel1.add(bIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 370, 40));
+        jPanel1.add(campoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 200, 30));
 
         jLabel4.setBackground(new java.awt.Color(102, 153, 255));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
@@ -124,15 +107,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Inicio de Sesión");
         jLabel4.setOpaque(true);
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 50));
-
-        jLabel5.setBackground(new java.awt.Color(102, 153, 255));
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Tipo de usuario");
-        jLabel5.setOpaque(true);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 400, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 400, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 242, 400, 0));
 
         laMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/mapaitl.jpg"))); // NOI18N
         laMapa.setText("laMapa");
@@ -153,9 +128,9 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(laMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(87, 87, 87)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))
+                        .addGap(172, 172, 172)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))
                     .addComponent(labelPie, javax.swing.GroupLayout.PREFERRED_SIZE, 1136, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -171,7 +146,7 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(laMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelPrincipalLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelPie, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(982, Short.MAX_VALUE))
@@ -181,40 +156,6 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void bIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresarActionPerformed
-        // TODO add your handling code here:
-        // en caso de que sea de caseta
-        if (radioSeguridad.isSelected()) {
-            if (campoUsuario.getText().equals("isai") && campoContraseña.getText().equals("123")) {
-
-                this.dispose();
-                Pantalla_Principal_Seguridad p = new Pantalla_Principal_Seguridad();
-                p.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario ó contraseña no válido", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } // en caso de que sea administrador
-        else {
-            
-            if (campoUsuario.getText().equals("carreon") && campoContraseña.getText().equals("123")) {
-
-                this.dispose();
-                Pantalla_Principal_Administrador p = new Pantalla_Principal_Administrador();
-                p.setVisible(true);
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Usuario ó contraseña no válido", "Error de Autenticación", JOptionPane.ERROR_MESSAGE);
-            }
-
-        }
-    }//GEN-LAST:event_bIngresarActionPerformed
-
-    private void radioSeguridadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioSeguridadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioSeguridadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,14 +194,13 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bIngresar;
+    public javax.swing.JButton bIngresar;
     public javax.swing.JPasswordField campoContraseña;
     public javax.swing.JTextField campoUsuario;
     private javax.swing.ButtonGroup grupo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
@@ -268,8 +208,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel labelHeader;
     private javax.swing.JLabel labelPie;
     private javax.swing.JPanel panelPrincipal;
-    public javax.swing.JRadioButton radioAdmin;
-    public javax.swing.JRadioButton radioSeguridad;
     // End of variables declaration//GEN-END:variables
 
     private void configurarComponentes() {

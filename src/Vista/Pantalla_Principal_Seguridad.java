@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Controlador_Login;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.io.File;
@@ -27,6 +28,8 @@ public class Pantalla_Principal_Seguridad extends javax.swing.JFrame {
      */
     public Pantalla_Principal_Seguridad() {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setVisible(true);
+        
         try {
             setIconImage(ImageIO.read(new File("src\\Recursos\\iconoEstacionamiento_1.png")));
         } catch (IOException ex) {
@@ -80,7 +83,7 @@ public class Pantalla_Principal_Seguridad extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Administrador");
+        jLabel1.setText("Seguridad");
         jLabel1.setAlignmentX(0.5F);
 
         botonCerrarSesion.setBackground(new java.awt.Color(255, 102, 10));
@@ -231,17 +234,14 @@ public class Pantalla_Principal_Seguridad extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(labelLeon, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelLeon, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(labelLeon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(labelLeon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel5.setBackground(new java.awt.Color(204, 204, 204));
@@ -373,8 +373,7 @@ public class Pantalla_Principal_Seguridad extends javax.swing.JFrame {
 
             this.dispose();
             Login login = new Login();
-            login.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            login.setVisible(true);
+            Controlador_Login controlador_Login = new Controlador_Login(login);
 
             break;
             default:
@@ -460,8 +459,8 @@ public class Pantalla_Principal_Seguridad extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonBuscar;
-    private javax.swing.JButton botonCerrarSesion;
+    public javax.swing.JButton botonBuscar;
+    public javax.swing.JButton botonCerrarSesion;
     public javax.swing.JTextField campoBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
