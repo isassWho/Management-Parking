@@ -3,8 +3,11 @@ package Controlador;
 
 import Vista.Pantalla_Añadir_Usuario;
 import Vista.Pantalla_Principal_Administrador;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -32,6 +35,13 @@ public class Controlador_Principal_Administrador implements ActionListener{
         if (o == this.vistaAdmin.botonBuscar) {
             
             System.out.println("Buscar");
+            
+            String rutaNoUsuario = this.vistaAdmin.campoBuscar.getText();
+            ImageIcon imagen1 = new ImageIcon("src\\Recursos\\" + rutaNoUsuario + ".JPG");
+            Icon fondo1 = new ImageIcon(imagen1.getImage().getScaledInstance(this.vistaAdmin.labelUsuario.getWidth(), this.vistaAdmin.labelUsuario.getHeight(), Image.SCALE_DEFAULT));
+            this.vistaAdmin.labelUsuario.setIcon(fondo1);
+//            this.repaint();
+            
             
         }else
         if (o == this.vistaAdmin.botonEditar) {
@@ -73,32 +83,10 @@ public class Controlador_Principal_Administrador implements ActionListener{
         }else
         if (o == this.vistaAdmin.botonVerUsuarios) {
             this.vistaAdmin.tabla.setEnabled(true);
-//            String[][] datosTabla = new String[2][2];
-            String[][] datosTabla = new String[2][9];
             
-            datosTabla[0][0] = "18240603";
-            datosTabla[0][1] = "Drake Bell";
-            datosTabla[0][2] = "7:00";
-            datosTabla[0][3] = "2:00";
-            datosTabla[0][4] = "kj6k4h";
-            datosTabla[0][5] = "Mazda 3";
-            datosTabla[0][6] = "rojo";
-            datosTabla[0][0] = "2019";
-            datosTabla[0][0] = "26/08/2019";
-                    
+            String[] ren = {"16241103", "Isai Lugo", "wsef5", "Sentra", "2017", "Blanco"};
+            this.vistaAdmin.modelo.addRow(ren);
             
-            datosTabla[0][0] = "16241103";
-            datosTabla[0][1] = "Isai";
-            datosTabla[0][2] = "7:00";
-            datosTabla[0][3] = "2:00";
-            datosTabla[0][4] = "kj6k4h";
-            datosTabla[0][5] = "tractor";
-            datosTabla[0][6] = "verde";
-            datosTabla[0][0] = "1978";
-            datosTabla[0][0] = "26/08/2019";
-                    
-//            falta rellenar la tabla con los valoes que se seleccionen
-//            this.vistaAdmin.tabla.
             System.out.println("Ver usuarios");
             
         }else

@@ -14,13 +14,19 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
  * @author Isass
  */
 public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
-
+    
+    
+    public DefaultTableModel modelo;
+    
+    
     /**
      * Creates new form Pantalla_Principal_Administrador
      */
@@ -320,7 +326,7 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
                             .addComponent(jSeparator1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(37, 37, 37))))
             .addComponent(jSeparator3)
         );
@@ -544,8 +550,8 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(129, 129, 129))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(133, 133, 133))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -629,6 +635,14 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
         botonGuardar.setEnabled(false);
         botonEditar.setEnabled(!false);
         labelUsuario.setEnabled(!false);
+        
+        campoNombre.setEnabled(false);
+        campoEstado.setEnabled(false);
+        campoPlaca.setEnabled(false);
+        campoModelo.setEnabled(false);
+        campoAño.setEnabled(false);
+        campoColor.setEnabled(false);
+        
     }//GEN-LAST:event_botonBuscarActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
@@ -650,14 +664,29 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-        // habilita los botones:
-        campoNombre.setEnabled(!false);
-        campoEstado.setEnabled(!false);
-        campoPlaca.setEnabled(!false);
-        campoModelo.setEnabled(!false);
-        campoAño.setEnabled(!false);
-        campoColor.setEnabled(!false);
-        botonGuardar.setEnabled(!false);
+        
+        if (botonEditar.getText().equals("Editar")) {
+            botonEditar.setText("Cancelar");
+            // habilita los botones:
+            campoNombre.setEnabled(!false);
+            campoEstado.setEnabled(!false);
+            campoPlaca.setEnabled(!false);
+            campoModelo.setEnabled(!false);
+            campoAño.setEnabled(!false);
+            campoColor.setEnabled(!false);
+            botonGuardar.setEnabled(!false);
+        }else{
+            botonEditar.setText("Editar");
+            // deshabilita los botones:
+            campoNombre.setEnabled(false);
+            campoEstado.setEnabled(false);
+            campoPlaca.setEnabled(false);
+            campoModelo.setEnabled(false);
+            campoAño.setEnabled(false);
+            campoColor.setEnabled(false);
+            botonGuardar.setEnabled(false);
+        }
+
 
     }//GEN-LAST:event_botonEditarActionPerformed
 
@@ -732,6 +761,16 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
 
     private void configurarComponentes() {
         
+        modelo = new DefaultTableModel();
+        tabla.setModel(modelo);
+        
+        modelo.addColumn("No. Control");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Placa");
+        modelo.addColumn("Modelo");
+        modelo.addColumn("Año");
+        modelo.addColumn("Color");
+        
         //acomoda el log del tec
         ImageIcon imagen1 = new ImageIcon("src\\Recursos\\headerLeon.png");
         Icon fondo1 = new ImageIcon(imagen1.getImage().getScaledInstance(labelHeader.getWidth(), labelHeader.getHeight(), Image.SCALE_DEFAULT));
@@ -759,6 +798,7 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
         labelUsuario.setEnabled(false);
         
         this.tabla.setEnabled(false);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -811,7 +851,7 @@ public class Pantalla_Principal_Administrador extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JLabel labelHeader;
     private javax.swing.JLabel labelStatus;
-    private javax.swing.JLabel labelUsuario;
+    public javax.swing.JLabel labelUsuario;
     private javax.swing.JPanel panelPrincipal;
     public javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables

@@ -50,8 +50,11 @@ public class Controlador_Añadir_Usuario implements ActionListener, CaretListene
     @Override
     public void actionPerformed(ActionEvent ae) {
         
-         JOptionPane.showMessageDialog(vista, "evento action");
+        JOptionPane.showMessageDialog(vista, "Guardado");
         System.out.println("Guardar Usuario");
+        this.vista.dispose();
+//        this.vista.
+
         
     }
 
